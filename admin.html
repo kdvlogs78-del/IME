@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Management - I.M.E Plastic Admin</title>
+    <title>I.M.E Plastic - Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,55 +12,93 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #f8fafc, white);
-            color: #1e293b;
-            min-height: 100vh;
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #60a5fa;
+            --secondary: #0ea5e9;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-hover: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        @keyframes fadeInUp {
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Login Screen */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #dbeafe 0%, #f0f9ff 50%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+            top: -400px;
+            right: -400px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .login-container::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.06) 0%, transparent 70%);
+            bottom: -300px;
+            left: -300px;
+            animation: pulse 10s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .login-box {
+            background: var(--bg-card);
+            padding: 60px 50px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            max-width: 480px;
+            width: 100%;
+            border: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* LOGIN PAGE STYLES */
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
-            padding: 20px;
-        }
-
-        .login-box {
-            background: white;
-            padding: 60px 50px;
-            border-radius: 24px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-            max-width: 450px;
-            width: 100%;
-            animation: fadeInUp 0.6s ease;
         }
 
         .login-header {
@@ -68,34 +106,34 @@
             margin-bottom: 40px;
         }
 
-        .login-logo {
+        .logo-container {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 800;
-            margin: 0 auto 24px;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+            color: white;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25);
         }
 
-        .login-header h1 {
+        .login-box h1 {
             font-size: 32px;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 8px;
-            font-weight: 800;
         }
 
-        .login-header p {
-            color: #64748b;
-            font-size: 16px;
+        .login-box p {
+            color: var(--text-secondary);
+            font-size: 15px;
         }
 
         .form-group {
@@ -104,138 +142,167 @@
 
         .form-group label {
             display: block;
-            font-size: 15px;
             font-weight: 600;
-            color: #1e293b;
             margin-bottom: 10px;
+            color: var(--text-primary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-group input {
             width: 100%;
             padding: 16px 20px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid var(--border);
             border-radius: 12px;
             font-size: 15px;
-            transition: all 0.3s;
-            font-family: inherit;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            background: var(--bg-card);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-secondary);
         }
 
         .login-btn {
             width: 100%;
-            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            padding: 18px 40px;
+            padding: 18px;
             border: none;
             border-radius: 12px;
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
         }
 
         .login-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4);
         }
 
-        .error-message {
-            display: none;
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 16px;
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-msg {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            padding: 14px 18px;
             border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            border: 2px solid #ef4444;
-            animation: fadeInUp 0.3s ease;
-        }
-
-        .error-message.show {
-            display: block;
-        }
-
-        /* ADMIN DASHBOARD STYLES */
-        #adminDashboard {
+            margin-bottom: 24px;
             display: none;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            font-size: 14px;
+            font-weight: 500;
         }
 
-        #adminDashboard.active {
+        .error-msg.show {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .error-msg::before {
+            content: '⚠';
+            font-size: 18px;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .dashboard.active {
             display: block;
         }
 
-        header {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
-            color: white;
-            padding: 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            padding: 30px 0;
+            z-index: 100;
+            overflow-y: auto;
         }
 
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 32px 40px;
+        .sidebar-header {
+            padding: 0 30px 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-logo {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            animation: slideInLeft 0.8s ease;
-        }
-
-        .logo-img {
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
+        .sidebar-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 24px;
             font-weight: 800;
-            font-size: 28px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
         }
 
-        .logo-text h1 {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 4px;
+        .sidebar-logo-text h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 2px;
         }
 
-        .logo-text p {
-            font-size: 15px;
-            opacity: 0.9;
+        .sidebar-logo-text p {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 16px;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 12px 24px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            gap: 12px;
+            padding: 15px;
+            background: var(--bg-main);
+            border-radius: 12px;
         }
 
         .user-avatar {
-            width: 48px;
-            height: 48px;
-            background: white;
-            color: #1e40af;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -243,327 +310,488 @@
             font-size: 18px;
         }
 
-        .user-details h3 {
-            font-size: 15px;
+        .user-details h4 {
+            font-size: 14px;
             font-weight: 600;
+            margin-bottom: 2px;
         }
 
         .user-details p {
-            font-size: 13px;
-            opacity: 0.9;
+            font-size: 12px;
+            color: var(--text-secondary);
         }
 
-        .logout-btn {
-            background: rgba(239, 68, 68, 0.2);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            font-size: 14px;
+        .sidebar-nav {
+            padding: 30px 20px;
         }
 
-        .logout-btn:hover {
-            background: #ef4444;
-            border-color: #ef4444;
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 50px 40px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-bottom: 50px;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 32px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s;
-            border: 2px solid transparent;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
-            border-color: #3b82f6;
-        }
-
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-
-        .stat-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #3b82f6, #60a5fa);
-            border-radius: 16px;
+        .nav-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .stat-number {
-            font-size: 42px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            color: #64748b;
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .stat-change {
-            font-size: 14px;
-            color: #10b981;
-            font-weight: 600;
-            margin-top: 12px;
-        }
-
-        .content-section {
-            background: white;
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-            animation: fadeInUp 1s ease;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-            padding-bottom: 24px;
-            border-bottom: 2px solid #f1f5f9;
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-actions {
-            display: flex;
             gap: 12px;
+            padding: 14px 16px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .nav-icon {
+            font-size: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 30px;
+        }
+
+        .top-bar {
+            background: var(--bg-card);
+            padding: 25px 35px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .top-bar h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .top-bar-actions {
+            display: flex;
+            gap: 15px;
         }
 
         .btn {
-            padding: 14px 28px;
-            border-radius: 12px;
+            padding: 12px 24px;
             border: none;
+            border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             font-size: 14px;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
         }
 
         .btn-secondary {
-            background: white;
-            color: #3b82f6;
-            border: 2px solid #3b82f6;
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
         }
 
         .btn-secondary:hover {
-            background: #3b82f6;
+            background: var(--bg-main);
+        }
+
+        .btn-danger {
+            background: var(--danger);
             color: white;
         }
 
-        .controls {
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-header {
             display: flex;
-            gap: 16px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+
+        .stat-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            background: var(--bg-main);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-card:nth-child(1) .stat-icon {
+            color: var(--primary);
+        }
+
+        .stat-card:nth-child(2) .stat-icon {
+            color: var(--warning);
+        }
+
+        .stat-card:nth-child(3) .stat-icon {
+            color: var(--success);
+        }
+
+        .stat-card:nth-child(4) .stat-icon {
+            color: var(--secondary);
+        }
+
+        .stat-info h3 {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-change {
+            margin-top: 12px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .stat-change.negative {
+            color: var(--danger);
+        }
+
+        /* Filters */
+        .filters-section {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 15px;
         }
 
         .search-box {
-            flex: 1;
-            min-width: 300px;
             position: relative;
         }
 
         .search-box input {
             width: 100%;
-            padding: 14px 20px 14px 48px;
-            border: 2px solid #e2e8f0;
+            padding: 14px 20px 14px 45px;
+            border: 2px solid var(--border);
             border-radius: 12px;
-            font-size: 15px;
-            transition: all 0.3s;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
         }
 
         .search-box input:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
 
-        .search-box::before {
-            content: '🔍';
+        .search-icon {
             position: absolute;
-            left: 18px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
+            color: var(--text-secondary);
             font-size: 18px;
         }
 
         .filter-select {
-            padding: 14px 20px;
-            border: 2px solid #e2e8f0;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
             border-radius: 12px;
-            font-size: 15px;
-            font-weight: 600;
+            background: var(--bg-main);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
-            background: white;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
         }
 
         .filter-select:focus {
             outline: none;
-            border-color: #3b82f6;
+            border-color: var(--primary);
         }
 
-        .table-wrapper {
+        /* Messages Section */
+        .messages-section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .messages-header {
+            padding: 30px 35px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .messages-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .table-filters {
+            padding: 20px 35px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .messages-table-container {
             overflow-x: auto;
         }
 
-        table {
+        .messages-table {
             width: 100%;
             border-collapse: collapse;
         }
 
-        thead {
-            background: #f8fafc;
+        .messages-table thead {
+            background: var(--bg-main);
         }
 
-        th {
+        .messages-table th {
             padding: 18px 20px;
             text-align: left;
+            font-size: 11px;
             font-weight: 700;
-            color: #1e293b;
-            font-size: 13px;
+            color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #e2e8f0;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border);
         }
 
-        td {
-            padding: 24px 20px;
-            border-bottom: 1px solid #f1f5f9;
+        .messages-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s ease;
+        }
+
+        .messages-table tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .messages-table td {
+            padding: 20px;
+            color: var(--text-primary);
             font-size: 14px;
-            color: #475569;
         }
 
-        tbody tr {
-            transition: all 0.3s;
+        .date-time-cell {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
         }
 
-        tbody tr:hover {
-            background: #f8fafc;
-            transform: scale(1.01);
+        .date-time-cell .date {
+            display: block;
+            font-weight: 600;
         }
 
-        .status-badge {
-            padding: 8px 16px;
-            border-radius: 20px;
+        .date-time-cell .time {
+            display: block;
             font-size: 12px;
-            font-weight: 700;
+        }
+
+        .name-cell {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .email-cell {
+            color: var(--text-secondary);
+        }
+
+        .phone-cell {
+            color: var(--text-secondary);
+        }
+
+        .preview-cell {
+            max-width: 250px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--text-secondary);
+        }
+
+        .table-status-badge {
             display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .status-new {
-            background: #dbeafe;
-            color: #1e40af;
+        .table-status-new {
+            background: rgba(251, 191, 36, 0.15);
+            color: var(--warning);
+            border: 1px solid rgba(251, 191, 36, 0.3);
         }
 
-        .status-read {
-            background: #d1fae5;
-            color: #065f46;
+        .table-status-read {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
-        .status-responded {
-            background: #e0e7ff;
-            color: #3730a3;
+        .table-status-responded {
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--primary);
+            border: 1px solid rgba(37, 99, 235, 0.3);
         }
 
-        .action-buttons {
+        .actions-cell {
             display: flex;
             gap: 8px;
         }
 
-        .btn-icon {
+        .action-icon-btn {
             width: 36px;
             height: 36px;
-            border-radius: 10px;
             border: none;
+            border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            transition: all 0.3s;
+            transition: all 0.2s ease;
         }
 
         .btn-view {
-            background: #dbeafe;
-            color: #1e40af;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
         }
 
         .btn-view:hover {
-            background: #3b82f6;
-            color: white;
-            transform: scale(1.1);
+            background: rgba(37, 99, 235, 0.2);
+            transform: scale(1.05);
         }
 
-        .btn-delete {
-            background: #fee2e2;
-            color: #991b1b;
+        .btn-delete-icon {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
         }
 
-        .btn-delete:hover {
-            background: #ef4444;
-            color: white;
-            transform: scale(1.1);
+        .btn-delete-icon:hover {
+            background: rgba(239, 68, 68, 0.2);
+            transform: scale(1.05);
         }
 
+        .loading-cell {
+            text-align: center;
+            padding: 80px 30px !important;
+        }
+
+        .loading-cell .spinner {
+            margin: 0 auto 20px;
+        }
+
+        .loading-cell p {
+            color: var(--text-secondary);
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -571,323 +799,628 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
             z-index: 1000;
-            justify-content: center;
             align-items: center;
-            backdrop-filter: blur(4px);
+            justify-content: center;
         }
 
         .modal.active {
             display: flex;
         }
 
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
         .modal-content {
-            background: white;
-            padding: 48px;
+            position: relative;
+            background: var(--bg-card);
             border-radius: 24px;
-            max-width: 700px;
+            max-width: 800px;
             width: 90%;
             max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.4s ease;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .modal-header {
+            padding: 30px 35px;
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f1f5f9;
         }
 
         .modal-header h2 {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
         }
 
-        .close-modal {
-            background: #fee2e2;
-            color: #991b1b;
-            border: none;
+        .modal-close {
             width: 40px;
             height: 40px;
+            border: none;
+            background: var(--bg-hover);
             border-radius: 10px;
-            font-size: 24px;
             cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 20px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
         }
 
-        .close-modal:hover {
-            background: #ef4444;
-            color: white;
+        .modal-close:hover {
+            background: var(--bg-main);
+            color: var(--text-primary);
             transform: rotate(90deg);
         }
 
         .modal-body {
-            margin-bottom: 32px;
+            padding: 35px;
+            overflow-y: auto;
+            max-height: calc(90vh - 200px);
         }
 
-        .info-group {
-            margin-bottom: 24px;
+        .modal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
         }
 
-        .info-label {
-            font-size: 13px;
+        .modal-info-item {
+            background: var(--bg-main);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .modal-info-item label {
+            display: block;
+            font-size: 11px;
             font-weight: 700;
-            color: #64748b;
+            color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             margin-bottom: 8px;
         }
 
-        .info-value {
-            font-size: 16px;
-            color: #1e293b;
-            line-height: 1.6;
-            padding: 14px;
-            background: #f8fafc;
-            border-radius: 10px;
+        .modal-info-item .value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
-        .message-box {
-            background: #f8fafc;
-            padding: 24px;
-            border-radius: 12px;
-            border-left: 4px solid #3b82f6;
-            line-height: 1.8;
-            color: #475569;
+        .modal-message {
+            margin-top: 30px;
         }
 
-        .modal-footer {
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .empty-state-icon {
-            font-size: 80px;
-            margin-bottom: 24px;
-            opacity: 0.3;
-        }
-
-        .empty-state h3 {
-            font-size: 24px;
-            color: #64748b;
+        .modal-message label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 12px;
         }
 
-        .empty-state p {
-            color: #94a3b8;
-            font-size: 16px;
+        .modal-message-content {
+            background: var(--bg-main);
+            padding: 25px;
+            border-radius: 12px;
+            line-height: 1.8;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            font-size: 15px;
         }
 
-        @media (max-width: 1024px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+        .modal-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 12px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* View All Data Modal */
+        .modal-large {
+            max-width: 95%;
+            max-height: 95vh;
+        }
+
+        .data-view-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table-wrapper {
+            overflow: auto;
+            max-height: calc(95vh - 250px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .data-table thead {
+            position: sticky;
+            top: 0;
+            background: var(--bg-main);
+            z-index: 10;
+        }
+
+        .data-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .data-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s ease;
+        }
+
+        .data-table tbody tr:hover {
+            background: var(--bg-hover);
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            color: var(--text-primary);
+            border-right: 1px solid var(--border);
+        }
+
+        .data-table td:last-child {
+            border-right: none;
+        }
+
+        .data-table .message-col {
+            max-width: 300px;
+            white-space: normal;
+            line-height: 1.5;
+        }
+
+        .data-table .index-col {
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .copy-success {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            animation: slideInRight 0.3s ease-out;
+            z-index: 10000;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Table */
+        @media (max-width: 1200px) {
+            .messages-table th:nth-child(4),
+            .messages-table td:nth-child(4) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .messages-table th:nth-child(5),
+            .messages-table td:nth-child(5) {
+                display: none;
+            }
+
+            .modal-info-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 768px) {
-            .login-box {
-                padding: 40px 30px;
-            }
-
-            .container {
-                padding: 30px 20px;
-            }
-
-            .header-content {
-                padding: 24px 20px;
+            .messages-header {
                 flex-direction: column;
                 gap: 20px;
+                align-items: stretch;
+            }
+
+            .header-actions {
+                justify-content: space-between;
+            }
+
+            .table-filters {
+                flex-direction: column;
+            }
+
+            .filter-group {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+
+            .messages-table th:nth-child(3),
+            .messages-table td:nth-child(3) {
+                display: none;
+            }
+        }
+
+        /* Loading & Empty States */
+        .loading, .empty-state {
+            text-align: center;
+            padding: 80px 30px;
+            color: var(--text-secondary);
+        }
+
+        .loading h3, .empty-state h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .filters-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .search-box {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 20px;
+                align-items: stretch;
+            }
+
+            .top-bar-actions {
+                justify-content: space-between;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
             }
 
-            .section-header {
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .message-header {
                 flex-direction: column;
+                gap: 15px;
+            }
+
+            .message-badges {
                 align-items: flex-start;
-                gap: 16px;
             }
 
-            .controls {
+            .message-meta {
                 flex-direction: column;
+                gap: 8px;
             }
+        }
 
-            .search-box {
-                min-width: 100%;
-            }
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
 
-            table {
-                font-size: 12px;
-            }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
 
-            th,
-            td {
-                padding: 12px 10px;
-            }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 5px;
+        }
 
-            .modal-content {
-                padding: 32px 24px;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
         }
     </style>
 </head>
-
 <body>
-    <!-- LOGIN PAGE -->
-    <div class="login-container" id="loginPage">
+    <!-- Login Screen -->
+    <div class="login-container" id="loginContainer">
         <div class="login-box">
             <div class="login-header">
-                <div class="login-logo">IME</div>
-                <h1>Admin Login</h1>
-                <p>I.M.E Plastic Management</p>
+                <div class="logo-container">IME</div>
+                <h1>Admin Portal</h1>
+                <p>I.M.E Plastic Contact Management</p>
             </div>
-
-            <div class="error-message" id="errorMessage">
-                ❌ Invalid password. Please try again.
-            </div>
-
+            <div class="error-msg" id="loginError">Invalid credentials. Please try again.</div>
             <form id="loginForm">
                 <div class="form-group">
-                    <label>Admin Password</label>
-                    <input type="password" id="passwordInput" placeholder="Enter admin password" required autofocus>
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="admin@imeplastic.com" required>
                 </div>
-                <button type="submit" class="login-btn">🔓 Login to Dashboard</button>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-btn">Sign In</button>
             </form>
+        </div>
+    </div>
 
-            <div style="margin-top: 30px; padding: 20px; background: #f1f5f9; border-radius: 12px; text-align: center;">
-                <p style="font-size: 13px; color: #64748b; margin-bottom: 8px;">Default Password:</p>
-                <p style="font-size: 16px; font-weight: 700; color: #1e40af; font-family: monospace;">admin@123</p>
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="sidebar-logo-icon">IME</div>
+                    <div class="sidebar-logo-text">
+                        <h2>I.M.E Plastic</h2>
+                        <p>Admin Dashboard</p>
+                    </div>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">AU</div>
+                    <div class="user-details">
+                        <h4>Admin User</h4>
+                        <p>Administrator</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-item active">
+                    <span class="nav-icon">📬</span>
+                    <span>Messages</span>
+                </div>
+                <div class="nav-item" id="viewAllDataBtn">
+                    <span class="nav-icon">📊</span>
+                    <span>View All Data</span>
+                </div>
+                <div class="nav-item" id="logoutBtn">
+                    <span class="nav-icon">🚪</span>
+                    <span>Logout</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-info">
+                            <h3>Total Messages</h3>
+                            <div class="stat-value" id="totalMessages">0</div>
+                        </div>
+                        <div class="stat-icon">💬</div>
+                    </div>
+                    <div class="stat-change">↑ All time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-info">
+                            <h3>New Messages</h3>
+                            <div class="stat-value" id="newMessages">0</div>
+                        </div>
+                        <div class="stat-icon">📨</div>
+                    </div>
+                    <div class="stat-change">↑ Unread</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-info">
+                            <h3>Responded</h3>
+                            <div class="stat-value" id="respondedMessages">0</div>
+                        </div>
+                        <div class="stat-icon">✅</div>
+                    </div>
+                    <div class="stat-change">↑ This month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-info">
+                            <h3>Today</h3>
+                            <div class="stat-value" id="todayMessages">0</div>
+                        </div>
+                        <div class="stat-icon">📅</div>
+                    </div>
+                    <div class="stat-change">↑ Last 24 hours</div>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="messages-section" id="messagesContainer">
+                <div class="messages-header">
+                    <h2>Contact Messages</h2>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary" id="markAllReadBtn">
+                            <span>✓</span>
+                            <span>Mark All Read</span>
+                        </button>
+                        <button class="btn btn-primary" id="exportBtn">
+                            <span>📥</span>
+                            <span>Export Data</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-filters">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" placeholder="Search messages...">
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-select" id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="new">New</option>
+                            <option value="read">Read</option>
+                        </select>
+                        <select class="filter-select" id="sortFilter">
+                            <option value="newest">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="messages-table-container">
+                    <table class="messages-table">
+                        <thead>
+                            <tr>
+                                <th>DATE & TIME</th>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>PHONE</th>
+                                <th>MESSAGE PREVIEW</th>
+                                <th>STATUS</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messagesTableBody">
+                            <tr>
+                                <td colspan="7" class="loading-cell">
+                                    <div class="spinner"></div>
+                                    <p>Loading messages...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <h3>📭 No Messages Found</h3>
+                    <p>Try adjusting your filters or search terms</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Message View Modal -->
+    <div class="modal" id="messageModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Message Details</h2>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content will be loaded dynamically -->
             </div>
         </div>
     </div>
 
-    <!-- ADMIN DASHBOARD -->
-    <div id="adminDashboard">
-        <header>
-            <div class="header-content">
-                <div class="logo-section">
-                    <div class="logo-img">IME</div>
-                    <div class="logo-text">
-                        <h1>I.M.E Plastic</h1>
-                        <p>Contact Management System</p>
-                    </div>
-                </div>
-                <div class="user-info">
-                    <div class="user-details">
-                        <h3>Admin User</h3>
-                        <p>Administrator</p>
-                    </div>
-                    <div class="user-avatar">AU</div>
-                    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
-                </div>
+    <!-- View All Data Modal -->
+    <div class="modal" id="allDataModal">
+        <div class="modal-overlay" onclick="closeAllDataModal()"></div>
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>All Messages Data</h2>
+                <button class="modal-close" onclick="closeAllDataModal()">✕</button>
             </div>
-        </header>
-
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div>
-                            <div class="stat-number" id="totalCount">0</div>
-                            <div class="stat-label">Total Messages</div>
-                            <div class="stat-change">↑ All time</div>
-                        </div>
-                        <div class="stat-icon">💬</div>
-                    </div>
+            <div class="modal-body">
+                <div class="data-view-controls">
+                    <button class="btn btn-primary" onclick="exportAllData()">
+                        <span>📥</span>
+                        <span>Export to CSV</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="copyAllData()">
+                        <span>📋</span>
+                        <span>Copy to Clipboard</span>
+                    </button>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div>
-                            <div class="stat-number" id="newCount">0</div>
-                            <div class="stat-label">New Messages</div>
-                            <div class="stat-change">↑ Unread</div>
-                        </div>
-                        <div class="stat-icon">📧</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div>
-                            <div class="stat-number" id="respondedCount">0</div>
-                            <div class="stat-label">Responded</div>
-                            <div class="stat-change">↑ This month</div>
-                        </div>
-                        <div class="stat-icon">✅</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div>
-                            <div class="stat-number" id="todayCount">0</div>
-                            <div class="stat-label">Today</div>
-                            <div class="stat-change">↑ Last 24 hours</div>
-                        </div>
-                        <div class="stat-icon">📊</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-section">
-                <div class="section-header">
-                    <h2 class="section-title">Contact Messages</h2>
-                    <div class="section-actions">
-                        <button class="btn btn-secondary" onclick="markAllRead()">✓ Mark All Read</button>
-                        <button class="btn btn-primary" onclick="exportMessages()">📥 Export Data</button>
-                    </div>
-                </div>
-
-                <div class="controls">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Search messages..." onkeyup="searchMessages()">
-                    </div>
-                    <select class="filter-select" id="statusFilter" onchange="filterMessages()">
-                        <option value="all">All Status</option>
-                        <option value="new">New</option>
-                        <option value="read">Read</option>
-                        <option value="responded">Responded</option>
-                    </select>
-                    <select class="filter-select" id="dateFilter" onchange="filterMessages()">
-                        <option value="all">All Time</option>
-                        <option value="today">Today</option>
-                        <option value="week">This Week</option>
-                        <option value="month">This Month</option>
-                    </select>
-                </div>
-
-                <div class="table-wrapper">
-                    <table id="messagesTable">
+                <div class="data-table-wrapper">
+                    <table class="data-table" id="allDataTable">
                         <thead>
                             <tr>
-                                <th>Date & Time</th>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Time</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>Message Preview</th>
+                                <th>Company</th>
+                                <th>Inquiry Type</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Message</th>
                             </tr>
                         </thead>
-                        <tbody id="messagesBody">
-                            <!-- Messages will be populated here -->
+                        <tbody id="allDataTableBody">
+                            <!-- Data will be loaded dynamically -->
                         </tbody>
                     </table>
                 </div>
@@ -895,318 +1428,496 @@
         </div>
     </div>
 
-    <div class="modal" id="messageModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Message Details</h2>
-                <button class="close-modal" onclick="closeModal()">✕</button>
-            </div>
-            <div class="modal-body">
-                <div class="info-group">
-                    <div class="info-label">From</div>
-                    <div class="info-value" id="modalName"></div>
-                </div>
-                <div class="info-group">
-                    <div class="info-label">Email Address</div>
-                    <div class="info-value" id="modalEmail"></div>
-                </div>
-                <div class="info-group">
-                    <div class="info-label">Phone Number</div>
-                    <div class="info-value" id="modalPhone"></div>
-                </div>
-                <div class="info-group">
-                    <div class="info-label">Date & Time</div>
-                    <div class="info-value" id="modalDate"></div>
-                </div>
-                <div class="info-group">
-                    <div class="info-label">Message</div>
-                    <div class="message-box" id="modalMessage"></div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
-                <button class="btn btn-primary" onclick="markAsResponded()">✓ Mark as Responded</button>
-            </div>
-        </div>
-    </div>
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { 
+            getFirestore, 
+            collection, 
+            query, 
+            orderBy, 
+            onSnapshot,
+            updateDoc,
+            deleteDoc,
+            doc,
+            writeBatch
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    <script>
-        // Fixed admin password (Change this to your desired password)
-        const ADMIN_PASSWORD = 'admin@123';
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCPqaylz5E3AZhLjCn7qOhkNyUm9irFKjI",
+            authDomain: "ime-plastic.firebaseapp.com",
+            projectId: "ime-plastic",
+            storageBucket: "ime-plastic.firebasestorage.app",
+            messagingSenderId: "563605582233",
+            appId: "1:563605582233:web:118727ccc4125f3ac2e308",
+            measurementId: "G-R12G34E476"
+        };
 
-        let messagesData = [];
-        let currentMessageIndex = null;
-        let isLoggedIn = false;
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
 
-        // Check login status on page load
-        window.addEventListener('DOMContentLoaded', function () {
-            checkLoginStatus();
+        let allMessages = [];
+        let filteredMessages = [];
+
+        // Auth state observer
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById('loginContainer').style.display = 'none';
+                document.getElementById('dashboard').classList.add('active');
+                loadMessages();
+            } else {
+                document.getElementById('loginContainer').style.display = 'flex';
+                document.getElementById('dashboard').classList.remove('active');
+            }
         });
 
-        function checkLoginStatus() {
-            const loggedIn = sessionStorage.getItem('ime_admin_logged_in');
-            if (loggedIn === 'true') {
-                showDashboard();
-            } else {
-                showLoginPage();
-            }
-        }
-
-        function showLoginPage() {
-            document.getElementById('loginPage').style.display = 'flex';
-            document.getElementById('adminDashboard').classList.remove('active');
-            isLoggedIn = false;
-        }
-
-        function showDashboard() {
-            document.getElementById('loginPage').style.display = 'none';
-            document.getElementById('adminDashboard').classList.add('active');
-            isLoggedIn = true;
-            loadMessages();
-            updateStats();
-            displayMessages();
-        }
-
-        // Login form submission
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
+        // Login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const password = document.getElementById('passwordInput').value;
-            const errorMsg = document.getElementById('errorMessage');
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
 
-            if (password === ADMIN_PASSWORD) {
-                sessionStorage.setItem('ime_admin_logged_in', 'true');
-                errorMsg.classList.remove('show');
-                showDashboard();
-            } else {
-                errorMsg.classList.add('show');
-                document.getElementById('passwordInput').value = '';
-                document.getElementById('passwordInput').focus();
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                document.getElementById('loginError').classList.remove('show');
+            } catch (error) {
+                document.getElementById('loginError').classList.add('show');
+                console.error('Login error:', error);
             }
         });
 
-        // Logout function
-        function logout() {
-            if (confirm('Are you sure you want to logout?')) {
-                sessionStorage.removeItem('ime_admin_logged_in');
-                showLoginPage();
-                document.getElementById('passwordInput').value = '';
-            }
-        }
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth);
+        });
 
-        function loadMessages() {
-            const stored = localStorage.getItem('ime_contact_messages');
-            if (stored) {
-                messagesData = JSON.parse(stored);
-            }
-        }
+        // View All Data button
+        document.getElementById('viewAllDataBtn').addEventListener('click', () => {
+            showAllDataModal();
+        });
 
-        function saveMessages() {
-            localStorage.setItem('ime_contact_messages', JSON.stringify(messagesData));
-        }
-
-        function displayMessages() {
-            const tbody = document.getElementById('messagesBody');
-            tbody.innerHTML = '';
-
-            if (messagesData.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="7">
-                            <div class="empty-state">
-                                <div class="empty-state-icon">🔭</div>
-                                <h3>No Messages Yet</h3>
-                                <p>Contact form submissions will appear here</p>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-
-            messagesData.forEach((msg, index) => {
-                const row = document.createElement('tr');
-                row.setAttribute('data-status', msg.status);
-                row.setAttribute('data-date', msg.dateObj || new Date().toISOString().split('T')[0]);
-
-                const statusClass = msg.status === 'new' ? 'status-new' :
-                    msg.status === 'read' ? 'status-read' : 'status-responded';
-                const statusText = msg.status.charAt(0).toUpperCase() + msg.status.slice(1);
-
-                row.innerHTML = `
-                    <td>${msg.date}<br><small style="color: #94a3b8;">${msg.time || ''}</small></td>
-                    <td><strong>${msg.name}</strong></td>
+        // Show All Data Modal
+        function showAllDataModal() {
+            const modal = document.getElementById('allDataModal');
+            const tbody = document.getElementById('allDataTableBody');
+            
+            tbody.innerHTML = allMessages.map((msg, index) => `
+                <tr>
+                    <td class="index-col">${index + 1}</td>
+                    <td>${msg.date}</td>
+                    <td>${msg.time}</td>
+                    <td>${msg.fullName || 'undefined'}</td>
                     <td>${msg.email}</td>
                     <td>${msg.phone}</td>
-                    <td>${msg.message.substring(0, 60)}...</td>
-                    <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                    <td>${msg.company || 'N/A'}</td>
+                    <td>${msg.inquiryType || 'General'}</td>
                     <td>
-                        <div class="action-buttons">
-                            <button class="btn-icon btn-view" onclick="viewMessage(${index})" title="View">👁️</button>
-                            <button class="btn-icon btn-delete" onclick="deleteMessage(${index})" title="Delete">🗑️</button>
-                        </div>
+                        <span class="table-status-badge table-status-${msg.status}">
+                            ${msg.status}
+                        </span>
                     </td>
-                `;
-                tbody.appendChild(row);
-            });
+                    <td class="message-col">${msg.message}</td>
+                </tr>
+            `).join('');
+            
+            modal.classList.add('active');
         }
 
-        function updateStats() {
-            const total = messagesData.length;
-            const newCount = messagesData.filter(m => m.status === 'new').length;
-            const respondedCount = messagesData.filter(m => m.status === 'responded').length;
+        // Close All Data Modal
+        window.closeAllDataModal = () => {
+            const modal = document.getElementById('allDataModal');
+            modal.classList.remove('active');
+        };
 
-            const today = new Date().toISOString().split('T')[0];
-            const todayCount = messagesData.filter(m => m.dateObj === today).length;
-
-            document.getElementById('totalCount').textContent = total;
-            document.getElementById('newCount').textContent = newCount;
-            document.getElementById('respondedCount').textContent = respondedCount;
-            document.getElementById('todayCount').textContent = todayCount;
-        }
-
-        function viewMessage(index) {
-            currentMessageIndex = index;
-            const msg = messagesData[index];
-
-            // Mark as read if it's new
-            if (msg.status === 'new') {
-                msg.status = 'read';
-                saveMessages();
-                updateStats();
-                displayMessages();
-            }
-
-            document.getElementById('modalName').textContent = msg.name;
-            document.getElementById('modalEmail').textContent = msg.email;
-            document.getElementById('modalPhone').textContent = msg.phone;
-            document.getElementById('modalDate').textContent = `${msg.date} ${msg.time || ''}`;
-            document.getElementById('modalMessage').textContent = msg.message;
-            document.getElementById('messageModal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('messageModal').classList.remove('active');
-            currentMessageIndex = null;
-        }
-
-        window.onclick = function (event) {
-            const modal = document.getElementById('messageModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        function deleteMessage(index) {
-            if (confirm('Are you sure you want to delete this message?')) {
-                messagesData.splice(index, 1);
-                saveMessages();
-                displayMessages();
-                updateStats();
-            }
-        }
-
-        function markAsResponded() {
-            if (currentMessageIndex !== null) {
-                messagesData[currentMessageIndex].status = 'responded';
-                saveMessages();
-                displayMessages();
-                updateStats();
-                alert('Message marked as responded!');
-                closeModal();
-            }
-        }
-
-        function markAllRead() {
-            if (confirm('Mark all messages as read?')) {
-                messagesData.forEach(msg => {
-                    if (msg.status === 'new') {
-                        msg.status = 'read';
-                    }
-                });
-                saveMessages();
-                displayMessages();
-                updateStats();
-                alert('All messages marked as read!');
-            }
-        }
-
-        function searchMessages() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const rows = document.querySelectorAll('#messagesBody tr');
-
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                row.style.display = text.includes(input) ? '' : 'none';
-            });
-        }
-
-        function filterMessages() {
-            const statusFilter = document.getElementById('statusFilter').value;
-            const dateFilter = document.getElementById('dateFilter').value;
-            const rows = document.querySelectorAll('#messagesBody tr');
-
-            rows.forEach(row => {
-                let showRow = true;
-
-                if (statusFilter !== 'all') {
-                    const status = row.getAttribute('data-status');
-                    if (status !== statusFilter) {
-                        showRow = false;
-                    }
-                }
-
-                if (dateFilter !== 'all' && showRow) {
-                    const rowDate = row.getAttribute('data-date');
-                    const today = new Date().toISOString().split('T')[0];
-
-                    if (dateFilter === 'today' && rowDate !== today) {
-                        showRow = false;
-                    }
-                }
-
-                row.style.display = showRow ? '' : 'none';
-            });
-        }
-
-        function exportMessages() {
-            if (messagesData.length === 0) {
-                alert('No messages to export!');
+        // Export All Data
+        window.exportAllData = () => {
+            if (allMessages.length === 0) {
+                alert('No messages to export');
                 return;
             }
 
-            let csv = 'Date,Time,Name,Email,Phone,Message,Status\n';
-            messagesData.forEach(msg => {
-                const row = [
+            const csvContent = [
+                ['#', 'Date', 'Time', 'Name', 'Email', 'Phone', 'Company', 'Inquiry Type', 'Status', 'Message'].join(','),
+                ...allMessages.map((msg, index) => [
+                    index + 1,
                     msg.date,
-                    msg.time || '',
-                    msg.name,
+                    msg.time,
+                    `"${msg.fullName || 'undefined'}"`,
                     msg.email,
                     msg.phone,
-                    `"${msg.message.replace(/"/g, '""')}"`,
-                    msg.status
-                ].join(',');
-                csv += row + '\n';
-            });
+                    `"${msg.company || 'N/A'}"`,
+                    msg.inquiryType || 'General',
+                    msg.status,
+                    `"${msg.message.replace(/"/g, '""')}"`
+                ].join(','))
+            ].join('\n');
 
-            const blob = new Blob([csv], { type: 'text/csv' });
+            const blob = new Blob([csvContent], { type: 'text/csv' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `ime-contact-messages-${new Date().toISOString().split('T')[0]}.csv`;
-            document.body.appendChild(a);
+            a.download = `all-contact-messages-${new Date().toISOString().split('T')[0]}.csv`;
             a.click();
-            document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
+            
+            showCopySuccess('Data exported successfully!');
+        };
 
-            alert('Messages exported successfully!');
+        // Copy All Data to Clipboard
+        window.copyAllData = async () => {
+            if (allMessages.length === 0) {
+                alert('No messages to copy');
+                return;
+            }
+
+            const textContent = allMessages.map((msg, index) => {
+                return `
+#${index + 1}
+Date: ${msg.date} ${msg.time}
+Name: ${msg.fullName || 'undefined'}
+Email: ${msg.email}
+Phone: ${msg.phone}
+Company: ${msg.company || 'N/A'}
+Inquiry Type: ${msg.inquiryType || 'General'}
+Status: ${msg.status}
+Message: ${msg.message}
+${'='.repeat(80)}
+                `.trim();
+            }).join('\n\n');
+
+            try {
+                await navigator.clipboard.writeText(textContent);
+                showCopySuccess('All data copied to clipboard!');
+            } catch (error) {
+                console.error('Failed to copy:', error);
+                alert('Failed to copy data to clipboard');
+            }
+        };
+
+        // Show copy success notification
+        function showCopySuccess(message) {
+            const notification = document.createElement('div');
+            notification.className = 'copy-success';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
         }
 
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
+        // Load messages from Firestore
+        function loadMessages() {
+            const q = query(collection(db, "contactMessages"), orderBy("createdAt", "desc"));
+            
+            onSnapshot(q, (snapshot) => {
+                allMessages = [];
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const timestamp = data.createdAt?.toDate() || new Date(data.timestamp);
+                    allMessages.push({
+                        id: doc.id,
+                        ...data,
+                        date: timestamp.toLocaleDateString('en-GB'),
+                        time: timestamp.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+                        timestamp: timestamp
+                    });
+                });
+                
+                updateStats();
+                filterMessages();
+            });
+        }
+
+        // Update statistics
+        function updateStats() {
+            const total = allMessages.length;
+            const newCount = allMessages.filter(m => m.status === 'new').length;
+            const respondedCount = allMessages.filter(m => m.status === 'read').length;
+            
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const todayCount = allMessages.filter(m => {
+                const msgDate = m.timestamp;
+                return msgDate >= today;
+            }).length;
+
+            document.getElementById('totalMessages').textContent = total;
+            document.getElementById('newMessages').textContent = newCount;
+            document.getElementById('respondedMessages').textContent = respondedCount;
+            document.getElementById('todayMessages').textContent = todayCount;
+        }
+
+        // Filter messages
+        function filterMessages() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            const sortFilter = document.getElementById('sortFilter').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredMessages = allMessages.filter(msg => {
+                const matchesStatus = statusFilter === 'all' || msg.status === statusFilter;
+                const matchesSearch = searchTerm === '' || 
+                    (msg.fullName && msg.fullName.toLowerCase().includes(searchTerm)) ||
+                    msg.email.toLowerCase().includes(searchTerm) ||
+                    msg.message.toLowerCase().includes(searchTerm) ||
+                    (msg.company && msg.company.toLowerCase().includes(searchTerm));
+
+                // Time filter
+                let matchesTime = true;
+                if (sortFilter !== 'newest') {
+                    const now = new Date();
+                    const msgDate = msg.timestamp;
+                    
+                    if (sortFilter === 'today') {
+                        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                        matchesTime = msgDate >= today;
+                    } else if (sortFilter === 'week') {
+                        const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+                        matchesTime = msgDate >= weekAgo;
+                    } else if (sortFilter === 'month') {
+                        const monthAgo = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+                        matchesTime = msgDate >= monthAgo;
+                    }
+                }
+
+                return matchesStatus && matchesSearch && matchesTime;
+            });
+
+            renderMessages();
+        }
+
+        // Render messages
+        function renderMessages() {
+            const tbody = document.getElementById('messagesTableBody');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (filteredMessages.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            tbody.innerHTML = filteredMessages.map(msg => `
+                <tr>
+                    <td>
+                        <div class="date-time-cell">
+                            <span class="date">${msg.date}</span>
+                            <span class="time">${msg.time}</span>
+                        </div>
+                    </td>
+                    <td class="name-cell">${msg.fullName || 'undefined'}</td>
+                    <td class="email-cell">${msg.email}</td>
+                    <td class="phone-cell">${msg.phone}</td>
+                    <td class="preview-cell">${msg.message.substring(0, 50)}${msg.message.length > 50 ? '...' : ''}</td>
+                    <td>
+                        <span class="table-status-badge table-status-${msg.status}">
+                            ${msg.status === 'new' ? 'Read' : msg.status === 'read' ? 'Read' : 'Responded'}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="actions-cell">
+                            <button class="action-icon-btn btn-view" onclick="viewMessage('${msg.id}')" title="View Message">
+                                👁
+                            </button>
+                            <button class="action-icon-btn btn-delete-icon" onclick="deleteMessage('${msg.id}')" title="Delete Message">
+                                🗑
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // View message in modal
+        window.viewMessage = async (id) => {
+            const msg = allMessages.find(m => m.id === id);
+            if (!msg) return;
+
+            const modal = document.getElementById('messageModal');
+            const modalBody = document.getElementById('modalBody');
+
+            modalBody.innerHTML = `
+                <div class="modal-info-grid">
+                    <div class="modal-info-item">
+                        <label>Full Name</label>
+                        <div class="value">${msg.fullName || 'undefined'}</div>
+                    </div>
+                    <div class="modal-info-item">
+                        <label>Email Address</label>
+                        <div class="value">${msg.email}</div>
+                    </div>
+                    <div class="modal-info-item">
+                        <label>Phone Number</label>
+                        <div class="value">${msg.phone}</div>
+                    </div>
+                    <div class="modal-info-item">
+                        <label>Company</label>
+                        <div class="value">${msg.company || 'Not provided'}</div>
+                    </div>
+                    <div class="modal-info-item">
+                        <label>Inquiry Type</label>
+                        <div class="value">${msg.inquiryType || 'General'}</div>
+                    </div>
+                    <div class="modal-info-item">
+                        <label>Date & Time</label>
+                        <div class="value">${msg.date} at ${msg.time}</div>
+                    </div>
+                </div>
+                <div class="modal-message">
+                    <label>Message</label>
+                    <div class="modal-message-content">${msg.message}</div>
+                </div>
+                <div class="modal-actions">
+                    ${msg.status === 'new' ? 
+                        `<button class="btn btn-primary" onclick="markAsReadAndClose('${msg.id}')">
+                            <span>✓</span>
+                            <span>Mark as Read</span>
+                        </button>` :
+                        `<button class="btn btn-secondary" onclick="markAsNew('${msg.id}')">
+                            <span>↻</span>
+                            <span>Mark as New</span>
+                        </button>`
+                    }
+                    <button class="btn btn-danger" onclick="deleteMessageAndClose('${msg.id}')">
+                        <span>🗑</span>
+                        <span>Delete Message</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                </div>
+            `;
+
+            modal.classList.add('active');
+
+            // Mark as read automatically when viewing
+            if (msg.status === 'new') {
+                try {
+                    await updateDoc(doc(db, "contactMessages", id), { status: 'read' });
+                } catch (error) {
+                    console.error('Error auto-marking as read:', error);
+                }
+            }
+        };
+
+        // Close modal
+        window.closeModal = () => {
+            const modal = document.getElementById('messageModal');
+            modal.classList.remove('active');
+        };
+
+        // Mark as read and close
+        window.markAsReadAndClose = async (id) => {
+            await markAsRead(id);
+            closeModal();
+        };
+
+        // Delete message and close
+        window.deleteMessageAndClose = async (id) => {
+            if (confirm('Are you sure you want to delete this message? This action cannot be undone.')) {
+                await deleteMessage(id);
                 closeModal();
             }
+        };
+
+        // Mark as read
+        window.markAsRead = async (id) => {
+            try {
+                await updateDoc(doc(db, "contactMessages", id), { status: 'read' });
+            } catch (error) {
+                console.error('Error updating message:', error);
+                alert('Failed to update message status');
+            }
+        };
+
+        // Mark as new
+        window.markAsNew = async (id) => {
+            try {
+                await updateDoc(doc(db, "contactMessages", id), { status: 'new' });
+            } catch (error) {
+                console.error('Error updating message:', error);
+                alert('Failed to update message status');
+            }
+        };
+
+        // Delete message
+        window.deleteMessage = async (id) => {
+            if (confirm('Are you sure you want to delete this message? This action cannot be undone.')) {
+                try {
+                    await deleteDoc(doc(db, "contactMessages", id));
+                } catch (error) {
+                    console.error('Error deleting message:', error);
+                    alert('Failed to delete message');
+                }
+            }
+        };
+
+        // Mark all as read
+        document.getElementById('markAllReadBtn').addEventListener('click', async () => {
+            const newMessages = allMessages.filter(m => m.status === 'new');
+            if (newMessages.length === 0) {
+                alert('No new messages to mark as read');
+                return;
+            }
+
+            if (confirm(`Mark ${newMessages.length} message(s) as read?`)) {
+                try {
+                    const batch = writeBatch(db);
+                    newMessages.forEach(msg => {
+                        const docRef = doc(db, "contactMessages", msg.id);
+                        batch.update(docRef, { status: 'read' });
+                    });
+                    await batch.commit();
+                } catch (error) {
+                    console.error('Error marking all as read:', error);
+                    alert('Failed to mark all messages as read');
+                }
+            }
         });
+
+        // Export data
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            if (allMessages.length === 0) {
+                alert('No messages to export');
+                return;
+            }
+
+            const csvContent = [
+                ['Date', 'Time', 'Name', 'Email', 'Phone', 'Company', 'Inquiry Type', 'Status', 'Message'].join(','),
+                ...allMessages.map(msg => [
+                    msg.date,
+                    msg.time,
+                    `"${msg.fullName}"`,
+                    msg.email,
+                    msg.phone,
+                    `"${msg.company || ''}"`,
+                    msg.inquiryType,
+                    msg.status,
+                    `"${msg.message.replace(/"/g, '""')}"`
+                ].join(','))
+            ].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `contact-messages-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+
+        // Filter event listeners
+        document.getElementById('statusFilter').addEventListener('change', filterMessages);
+        document.getElementById('sortFilter').addEventListener('change', filterMessages);
+        document.getElementById('searchInput').addEventListener('input', filterMessages);
     </script>
 </body>
-
 </html>
+
