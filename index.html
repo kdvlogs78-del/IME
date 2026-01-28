@@ -1058,164 +1058,6 @@
             line-height: 1.6;
         }
 
-        .contact {
-            background: linear-gradient(to bottom, white, #f8fafc);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
-        }
-
-        .contact-info {
-            animation: slideInLeft 1s ease;
-        }
-
-        .contact-info h3 {
-            font-size: 42px;
-            color: #1e293b;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-
-        .contact-info p {
-            font-size: 17px;
-            color: #64748b;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .contact-items {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 24px;
-            background: white;
-            border-radius: 16px;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s;
-        }
-
-        .contact-item:hover {
-            border-color: #3b82f6;
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
-        }
-
-        .contact-item-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #3b82f6, #60a5fa);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .contact-item-content h4 {
-            font-size: 16px;
-            color: #1e293b;
-            margin-bottom: 4px;
-            font-weight: 700;
-        }
-
-        .contact-item-content p {
-            font-size: 15px;
-            color: #64748b;
-            margin: 0;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 50px;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            border: 2px solid #e2e8f0;
-            animation: slideInRight 1s ease;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 15px;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 10px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 16px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 15px;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #3b82f6, #60a5fa);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
-        }
-
-        .success-message {
-            display: none;
-            background: #d1fae5;
-            color: #065f46;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-            font-weight: 600;
-            text-align: center;
-            border: 2px solid #10b981;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        .success-message.show {
-            display: block;
-        }
-
         footer {
             background: linear-gradient(135deg, #0f172a, #1e293b);
             color: white;
@@ -1406,15 +1248,6 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .contact-form {
-                padding: 30px;
-            }
-
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -1449,7 +1282,7 @@
                         <a href="#about">About</a>
                         <a href="#products">Products</a>
                         <a href="#services">Services</a>
-                        <a href="#contact" class="cta-btn">Contact Us</a>
+                        <a href="conn.html" class="cta-btn">Contact Us</a>
                     </nav>
                 </div>
             </div>
@@ -1465,7 +1298,7 @@
                     practices for a better future.</p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn-white">Explore Products →</a>
-                    <a href="#contact" class="btn-outline">Get Quote</a>
+                    <a href="contact.html" class="btn-outline">Get Quote</a>
                 </div>
             </div>
         </div>
@@ -1729,70 +1562,6 @@
         </div>
     </section>
 
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">GET IN TOUCH</span>
-                <h2 class="section-title">Contact Us</h2>
-                <p class="section-subtitle">Have a project in mind? Let's discuss how we can help bring your ideas to
-                    life.</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Let's Start a Conversation</h3>
-                    <p>Our team is ready to answer your questions and provide expert guidance on your plastic
-                        manufacturing needs.</p>
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <div class="contact-item-icon">📍</div>
-                            <div class="contact-item-content">
-                                <h4>Visit Us</h4>
-                                <p>Industrial Area, UAQ, UAE</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-item-icon">📞</div>
-                            <div class="contact-item-content">
-                                <h4>Call Us</h4>
-                                <p>+971 0555532222</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-item-icon">📧</div>
-                            <div class="contact-item-content">
-                                <h4>Email Us</h4>
-                                <p>info@imeplastic.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" id="userName" name="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" id="userEmail" name="email" placeholder="john@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" id="userPhone" name="phone" placeholder="+971 55 123 4567" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea id="userMessage" name="message" placeholder="Tell us about your project..."
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                    <div class="success-message" id="successMessage">
-                        ✅ Thank you! Your message has been sent successfully. We'll get back to you soon.
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1819,16 +1588,16 @@
                 <div class="footer-links">
                     <h4>Products</h4>
                     <ul>
-                        <li><a href="#">Containers</a></li>
-                        <li><a href="#">Packaging</a></li>
-                        <li><a href="#">Industrial Parts</a></li>
-                        <li><a href="#">Custom Orders</a></li>
+                        <li><a href="#products">Containers</a></li>
+                        <li><a href="#products">Packaging</a></li>
+                        <li><a href="#products">Industrial Parts</a></li>
+                        <li><a href="#products">Custom Orders</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Support</h4>
                     <ul>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
@@ -1885,62 +1654,6 @@
             });
         });
 
-        // Form submission with localStorage integration
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Get form values
-            const name = document.getElementById('userName').value;
-            const email = document.getElementById('userEmail').value;
-            const phone = document.getElementById('userPhone').value;
-            const message = document.getElementById('userMessage').value;
-
-            // Get current date and time
-            const now = new Date();
-            const date = now.toLocaleDateString('en-GB');
-            const time = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
-            const dateObj = now.toISOString().split('T')[0];
-
-            // Create message object
-            const messageData = {
-                name: name,
-                email: email,
-                phone: phone,
-                message: message,
-                date: date,
-                time: time,
-                dateObj: dateObj,
-                status: 'new',
-                timestamp: now.getTime()
-            };
-
-            // Get existing messages from localStorage
-            let messages = [];
-            const stored = localStorage.getItem('ime_contact_messages');
-            if (stored) {
-                messages = JSON.parse(stored);
-            }
-
-            // Add new message to beginning of array
-            messages.unshift(messageData);
-
-            // Save back to localStorage
-            localStorage.setItem('ime_contact_messages', JSON.stringify(messages));
-
-            // Show success message
-            const successMsg = document.getElementById('successMessage');
-            successMsg.classList.add('show');
-
-            // Reset form
-            this.reset();
-
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMsg.classList.remove('show');
-            }, 5000);
-
-            console.log('Message saved successfully!');
-        });
         // Intersection Observer for animation triggers
         const observerOptions = {
             threshold: 0.1,
